@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTS 測試</title>
+</head>
+<body>
+    <button onclick="speak()">播放語音</button>
+
+    <script>
+        function speak() {
+            let msg = new SpeechSynthesisUtterance("這是一個測試，TTS 播放成功。");
+            msg.lang = "zh-TW"; // 設定語言為繁體中文
+            speechSynthesis.speak(msg);
+        }
+    </script>
+</body>
+</html>
