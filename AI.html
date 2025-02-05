@@ -11,7 +11,7 @@ const main = async () => {
 
     _E8_AA_9E_E9_9F_B3_E8_BC_B8_E5_85_A5_E6_96_87_E5_AD_97 = '';
     video_create1('', 800, 600, 0, 0, true, '', false, false, false, true, true, 1, 999, true, "back", 0);
-    button_create('start', 250, 100, 100, 650, 1, null, '開始7', 12, 999, true);
+    button_create('start', 250, 100, 100, 650, 1, null, '開始8', 12, 999, true);
     button_create('stop', 250, 100, 400, 650, 1, null, '結束', 12, 999, true);
     span_create('', 330, 750, 30, '', 999);
     span_set('', "color", '#3366ff');
@@ -63,9 +63,12 @@ const main = async () => {
     async function gamebutton_stop_onclick(event) {
       
         ttsSwitch(1);
-       await ttsSpeak("Google 國語（臺灣）", "測試語音播放");
+       // 測試 TTS 播放
+    let msg = new SpeechSynthesisUtterance("測試語音播放");
+    msg.lang = "zh-TW";
+    speechSynthesis.speak(msg);
 
-alert(speechSynthesis.getVoices());
+        
         
 if ('speechSynthesis' in window) {
 alert("TTS 可用");
