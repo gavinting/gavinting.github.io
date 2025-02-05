@@ -15,7 +15,7 @@
 
 
   let speech = new SpeechSynthesisUtterance();
-    speech.lang = "zh-TW";
+    speech.lang = "cmn-Hant-TW";
     
     speech.text = "設定語言為繁體中文";
     speech.volume = 1;
@@ -29,7 +29,7 @@
 
   function speak2() {
   let msg = new SpeechSynthesisUtterance("這是一個測試，TTS 播放成功。");
-            msg.lang = "zh-TW"; // 設定語言為繁體中文
+            msg.lang = "en-US"; // 設定語言為繁體中文
             window.speechSynthesis.speak(msg);
 
 
