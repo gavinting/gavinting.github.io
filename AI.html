@@ -55,11 +55,15 @@ const main = async () => {
         ttsSwitch(1);
         await ttsSpeak("Google 國語（臺灣）", "測試語音播放");
     };
-    document.getElementById("gamebutton_start").addEventListener("click", gamebutton_start_onclick, true);
-    async function gamebutton_stop_onclick(event) {
-        Recognition_switch(0);
-        ttsSwitch(1);
+
     
+    document.getElementById("gamebutton_start").addEventListener("click", gamebutton_start_onclick, true);
+
+    
+    async function gamebutton_stop_onclick(event) {
+      
+        ttsSwitch(1);
+       await ttsSpeak("Google 國語（臺灣）", "測試語音播放");
 if ('speechSynthesis' in window) {
 alert("TTS 可用");
     console.log("TTS 可用");
