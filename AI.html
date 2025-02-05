@@ -1,0 +1,75 @@
+<!DOCTYPE html><html><head><meta charset='utf-8'><meta http-equiv='Access-Control-Allow-Headers' content='Origin, X-Requested-With, Content-Type, Accept'><meta http-equiv='Access-Control-Allow-Methods' content='GET,POST,PUT,DELETE,OPTIONS'><meta http-equiv='Access-Control-Allow-Origin' content='*'><meta http-equiv='Access-Control-Allow-Credentials' content='true'><script src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script><script src='https://fustyles.github.io/webduino/SpBlocklyJS/GameElements_20190131/marked.min.js'></script><script src='https://fustyles.github.io/webduino/SpBlocklyJS/GameElements_20190131/gameelements.js'></script><link rel='stylesheet' href='https://fustyles.github.io/webduino/SpBlocklyJS/css/icon_custom.css' /><script src='https://fustyles.github.io/webduino/SpBlocklyJS/TextToSpeech_20220729/texttospeech.js'></script><script src='https://fustyles.github.io/webduino/SpBlocklyJS/SpeechRecognition_20220729/speechrecognition.js'></script><script src='https://fustyles.github.io/webduino/SpBlocklyJS/gemini_20240209/gemini.js'></script></head><body>
+<script>
+const delay = (seconds) => {
+    return new Promise((resolve) => {
+        setTimeout(resolve, seconds * 1000);
+    });
+};
+const main = async () => {
+    var _E8_AA_9E_E9_9F_B3_E8_BC_B8_E5_85_A5_E6_96_87_E5_AD_97;
+
+
+    _E8_AA_9E_E9_9F_B3_E8_BC_B8_E5_85_A5_E6_96_87_E5_AD_97 = '';
+    video_create1('', 320, 240, 0, 0, true, '', false, false, false, true, true, 1, 999, true, "front", 0);
+    span_create('', 330, 0, 20, '', 999);
+    span_set('', "color", '#3366ff');
+    span_create('r', 0, 280, 20, '', 999);
+    span_create('s', 0, 310, 20, '', 999);
+    div_create('', 400, 300, 330, 30, "none", 1, '#000000', '#ffffff', '#ff6666', 20, 1, '', 999, true);
+    recognition.lang = "cmn-Hant-TW";
+    Recognition_switch(1);
+    SpeechRecognition_interim = document.getElementById("gamespan_");
+    ttsSetProperty(1, 1, 1, "cmn-Hant-TW");
+    ttsSwitch(1);
+    gemini_chat_initial('AIzaSyA2RD9A5lTcyJmjh_ca5JrHQjLMc8txHmA', "gemini-1.5-flash", 300);
+    await delay(1);
+    gemini_chat_insert((['你是繁體中文專業的助理，請依以下規範回覆我：', '\n', '1. 若對話內容有提及"影像"或"畫面"關鍵字或可能要用AI Vision才能做到，請僅回覆單字"vision"，這用於要改採AI Vision來對話，請不要多做解釋！', '\n', '2. 若不符合第1點的規範或與前次使用AI vison分析結果內容有關，則以平常方式回覆我！', '\n', '3. 若對話內容想請你看見某個內容，假想你能看到，請僅回覆單字"vision"，這用於要改採AI Vision來對話，請不要多做解釋！', '\n', '4. 若對話問題無法從過去記錄中得知且與影像內容有關，請僅回覆單字"vision"，這用於要改採AI Vision來對話，請不要多做解釋！'].join('')), "");
+    async function gemini_chat_response(gemini_chat_data) {
+        div_set('', "innerHTML", '');
+        if ((gemini_chat_response_br(gemini_chat_data, '')) == 'vision') {
+            await gemini_chat_image_request(([_E8_AA_9E_E9_9F_B3_E8_BC_B8_E5_85_A5_E6_96_87_E5_AD_97, '\\n', '請精簡回覆或摘要！'].join('')), (video_base64("gamevideo_" + '', true)));
+        } else {
+            div_set('', "innerHTML", (gemini_chat_response_br(gemini_chat_data, 'br')));
+            await ttsSpeak(("Microsoft Hanhan - Chinese (Traditional, Taiwan)"), (gemini_chat_response_br(gemini_chat_data, '')));
+        }
+
+    }
+    window.gemini_chat_response = gemini_chat_response;
+    Recognition_recognitionFinish = async function() {
+        if (Recognition_final_get()) {
+            _E8_AA_9E_E9_9F_B3_E8_BC_B8_E5_85_A5_E6_96_87_E5_AD_97 = (Recognition_final_get());
+            div_set('', "innerHTML", '');
+            await gemini_chat_run(_E8_AA_9E_E9_9F_B3_E8_BC_B8_E5_85_A5_E6_96_87_E5_AD_97);
+        }
+
+    };
+    setInterval(async function() {
+        if ((ttsSpeaking()) && (Recognition_state())) {
+            Recognition_switch(0);
+            span_set('r', "innerHTML", '語音辨識已關閉，可按空白鍵重啟');
+        } else if (Recognition_state()) {
+            span_set('r', "innerHTML", '語音辨識已啟動');
+        }
+        if (ttsSpeaking()) {
+            span_set('s', "innerHTML", '語音朗讀中，可按Ctrl鍵取消朗讀');
+        } else {
+            span_set('s', "innerHTML", '');
+            if (!(Recognition_state())) {
+                Recognition_switch(1);
+            }
+        }
+    }, 1000);
+    window.addEventListener("keydown", myKeydown, true);
+    async function myKeydown(event) {
+        if (event.keyCode == 32) {
+            Recognition_switch(1);
+            ttsSwitch(1);
+        } else if (event.keyCode == 17) {
+            ttsState("cancel");
+            Recognition_switch(0);
+        }
+    };
+};
+main();
+</script>
+</body></html>
