@@ -8,6 +8,7 @@
 <body>
     <button onclick="speak()">播放語音</button>
 
+     <button onclick="speak2()">播放語音2</button>
     <script>
         function speak() {
           
@@ -22,11 +23,21 @@
     speech.pitch = 1;
     
     window.speechSynthesis.speak(speech);
+            
+        }
 
+
+  function speak2() {
+  let msg = new SpeechSynthesisUtterance("這是一個測試，TTS 播放成功。");
+            msg.lang = "zh-TW"; // 設定語言為繁體中文
+            speechSynthesis.speak(msg);
 
 
             
         }
+
+
+        
     </script>
 </body>
 </html>
