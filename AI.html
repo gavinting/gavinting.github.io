@@ -64,6 +64,9 @@ const main = async () => {
       
         ttsSwitch(1);
        await ttsSpeak("Google 國語（臺灣）", "測試語音播放");
+
+alert(speechSynthesis.getVoices());
+        
 if ('speechSynthesis' in window) {
 alert("TTS 可用");
     console.log("TTS 可用");
