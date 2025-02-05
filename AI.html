@@ -11,7 +11,7 @@ const main = async () => {
 
     _E8_AA_9E_E9_9F_B3_E8_BC_B8_E5_85_A5_E6_96_87_E5_AD_97 = '';
     video_create1('', 800, 600, 0, 0, true, '', false, false, false, true, true, 1, 999, true, "back", 0);
-    button_create('start', 250, 100, 100, 650, 1, null, '開始3', 12, 999, true);
+    button_create('start', 250, 100, 100, 650, 1, null, '開始4', 12, 999, true);
     button_create('stop', 250, 100, 400, 650, 1, null, '結束', 12, 999, true);
     span_create('', 330, 750, 30, '', 999);
     span_set('', "color", '#3366ff');
@@ -34,7 +34,10 @@ const main = async () => {
             div_set('', "innerHTML", (gemini_chat_response_br(gemini_chat_data, 'br')));
             Recognition_switch(0);
             ttsSwitch(1);
+             await ttsSpeak("Google 國語（臺灣）", "測試語音播放");
             await ttsSpeak(("Google 國語（臺灣）"), (gemini_chat_response_br(gemini_chat_data, '')));
+
+            
         }
 
     }
@@ -50,11 +53,13 @@ const main = async () => {
     async function gamebutton_start_onclick(event) {
         Recognition_switch(1);
         ttsSwitch(1);
+        await ttsSpeak("Google 國語（臺灣）", "測試語音播放");
     };
     document.getElementById("gamebutton_start").addEventListener("click", gamebutton_start_onclick, true);
     async function gamebutton_stop_onclick(event) {
         Recognition_switch(0);
-        ttsSwitch(0);
+        ttsSwitch(1);
+         await ttsSpeak("Google 國語（臺灣）", "測試語音播放");
     };
     document.getElementById("gamebutton_stop").addEventListener("click", gamebutton_stop_onclick, true);
 };
