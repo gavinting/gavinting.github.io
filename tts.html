@@ -23,6 +23,12 @@
     
     window.speechSynthesis.speak(speech);
 
+
+   let msg = new SpeechSynthesisUtterance("這是一個測試，TTS 播放成功。");
+            msg.lang = "zh-TW"; // 設定語言為繁體中文
+            speechSynthesis.speak(msg);
+
+
             
         }
     </script>
