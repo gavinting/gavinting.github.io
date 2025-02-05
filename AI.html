@@ -18,7 +18,7 @@ const main = async () => {
     span_create('r', 0, 900, 30, '', 999);
     span_create('s', 0, 800, 30, '', 999);
     div_create('', 400, 300, 100, 850, "none", 1, '#000000', '#ffffff', '#ff6666', 30, 1, '', 999, true);
-    recognition.lang = "zh-TW";
+    recognition.lang = "zh-CN";
     Recognition_switch(0);
     SpeechRecognition_interim = document.getElementById("gamespan_");
     ttsSetProperty(1, 1, 1, "cmn-Hant-TW");
@@ -65,7 +65,7 @@ const main = async () => {
         ttsSwitch(1);
        // 測試 TTS 播放
     let msg = new SpeechSynthesisUtterance("測試語音播放");
-    msg.lang = "zh-TW";
+    msg.lang = "zh-CN";
     speechSynthesis.speak(msg);
 
         
