@@ -59,14 +59,14 @@ const main = async () => {
 
 
     _E8_AA_9E_E9_9F_B3_E8_BC_B8_E5_85_A5_E6_96_87_E5_AD_97 = '';
-    video_create1('', 1024, 768, 0, 0, true, '', false, false, false, true, true, 1, 999, true, "back", 0);
+    video_create1('', 768, 1024, 0, 0, true, '', false, false, false, true, true, 1, 999, true, "back", 0);
     button_create('start', 400, 200, 300, 800, 1, null, '語音輸入', 36, 999, true);
  //   button_create('stop', 250, 100, 400, 800, 1, null, '結束', 12, 999, true);
     span_create('', 330, 1000, 60, '', 999);
     span_set('', "color", '#3366ff');
     span_create('r', 0, 1100, 60, '', 999);
     span_create('s', 0, 900, 48, '', 999);
-    div_create('', 600, 200, 200, 1100, "none", 1, '#000000', '#888888', '#ff6666', 48, 1, '', 999, true);
+    div_create('', 700, 300, 200, 1100, "none", 1, '#000000', '#888888', '#ff6666', 48, 1, '', 999, true);
     recognition.lang = "zh-CN";
     Recognition_switch(0);
     SpeechRecognition_interim = document.getElementById("gamespan_");
