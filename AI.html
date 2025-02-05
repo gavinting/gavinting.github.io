@@ -2,7 +2,7 @@
 <script>
 const delay = (seconds) => {
     return new Promise((resolve) => {
-        setTimeout(resolve, seconds * 100000);
+        setTimeout(resolve, seconds * 1000);
     });
 };
 const main = async () => {
@@ -11,13 +11,13 @@ const main = async () => {
 
     _E8_AA_9E_E9_9F_B3_E8_BC_B8_E5_85_A5_E6_96_87_E5_AD_97 = '';
     video_create1('', 800, 600, 0, 0, true, '', false, false, false, true, true, 1, 999, true, "back", 0);
-    button_create('start', 60, 30, 100, 650, 1, null, '開始', 12, 999, true);
-    button_create('stop', 60, 30, 500, 650, 1, null, '結束', 12, 999, true);
-    span_create('', 330, 1000, 30, '', 999);
+    button_create('start', 200, 50, 100, 650, 1, null, '開始', 12, 999, true);
+    button_create('stop', 200, 50, 400, 650, 1, null, '結束', 12, 999, true);
+    span_create('', 330, 750, 30, '', 999);
     span_set('', "color", '#3366ff');
-    span_create('r', 0, 1300, 30, '', 999);
-    span_create('s', 0, 1400, 30, '', 999);
-    div_create('', 400, 300, 330, 1500, "none", 1, '#000000', '#ffffff', '#ff6666', 30, 1, '', 999, true);
+    span_create('r', 0, 900, 30, '', 999);
+    span_create('s', 0, 800, 30, '', 999);
+    div_create('', 400, 300, 100, 850, "none", 1, '#000000', '#ffffff', '#ff6666', 30, 1, '', 999, true);
     recognition.lang = "cmn-Hant-TW";
     Recognition_switch(0);
     SpeechRecognition_interim = document.getElementById("gamespan_");
@@ -45,6 +45,16 @@ const main = async () => {
         }
 
     };
+    async function gamebutton_start_onclick(event) {
+        Recognition_switch(1);
+        ttsSwitch(1);
+    };
+    document.getElementById("gamebutton_start").addEventListener("click", gamebutton_start_onclick, true);
+    async function gamebutton_stop_onclick(event) {
+        Recognition_switch(0);
+        ttsSwitch(0);
+    };
+    document.getElementById("gamebutton_stop").addEventListener("click", gamebutton_stop_onclick, true);
     setInterval(async function() {
         if ((ttsSpeaking()) && (Recognition_state())) {
             Recognition_switch(0);
@@ -58,17 +68,7 @@ const main = async () => {
             span_set('s', "innerHTML", '');
             if (!(Recognition_state())) {}
         }
-    }, 1000);
-    async function gamebutton_start_onclick(event) {
-        Recognition_switch(1);
-        ttsSwitch(1);
-    };
-    document.getElementById("gamebutton_start").addEventListener("click", gamebutton_start_onclick, true);
-    async function gamebutton_stop_onclick(event) {
-        Recognition_switch(0);
-        ttsSwitch(0);
-    };
-    document.getElementById("gamebutton_stop").addEventListener("click", gamebutton_stop_onclick, true);
+    }, 1000000);
 };
 main();
 </script>
