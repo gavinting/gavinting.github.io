@@ -11,18 +11,18 @@ const main = async () => {
 
     _E8_AA_9E_E9_9F_B3_E8_BC_B8_E5_85_A5_E6_96_87_E5_AD_97 = '';
     video_create1('', 800, 600, 0, 0, true, '', false, false, false, true, true, 1, 999, true, "back", 0);
-    button_create('start', 60, 30, 100, 650, 1, null, 'button', 12, 999, true);
-    button_create('stop', 60, 30, 500, 650, 1, null, 'button', 12, 999, true);
+    button_create('start', 60, 30, 100, 650, 1, null, '開始', 12, 999, true);
+    button_create('stop', 60, 30, 500, 650, 1, null, '結束', 12, 999, true);
     span_create('', 330, 1000, 30, '', 999);
     span_set('', "color", '#3366ff');
     span_create('r', 0, 1300, 30, '', 999);
     span_create('s', 0, 1400, 30, '', 999);
     div_create('', 400, 300, 330, 1500, "none", 1, '#000000', '#ffffff', '#ff6666', 30, 1, '', 999, true);
     recognition.lang = "cmn-Hant-TW";
-    Recognition_switch(1);
+    Recognition_switch(0);
     SpeechRecognition_interim = document.getElementById("gamespan_");
     ttsSetProperty(1, 1, 1, "cmn-Hant-TW");
-    ttsSwitch(1);
+    ttsSwitch(0);
     gemini_chat_initial('AIzaSyA2RD9A5lTcyJmjh_ca5JrHQjLMc8txHmA', "gemini-1.5-flash", 300);
     await delay(1);
     gemini_chat_insert((['你是繁體中文專業的助理，請依以下規範回覆我：', '\n', '1. 若對話內容有提及"影像"或"畫面"關鍵字或可能要用AI Vision才能做到，請僅回覆單字"vision"，這用於要改採AI Vision來對話，請不要多做解釋！', '\n', '2. 若不符合第1點的規範或與前次使用AI vison分析結果內容有關，則以平常方式回覆我！', '\n', '3. 若對話內容想請你看見某個內容，假想你能看到，請僅回覆單字"vision"，這用於要改採AI Vision來對話，請不要多做解釋！', '\n', '4. 若對話問題無法從過去記錄中得知且與影像內容有關，請僅回覆單字"vision"，這用於要改採AI Vision來對話，請不要多做解釋！'].join('')), "");
