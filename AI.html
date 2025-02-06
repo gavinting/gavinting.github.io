@@ -113,7 +113,7 @@ const main = async () => {
       
        Recognition_switch(0);
         ttsSwitch(0);
-        
+        speechSynthesis.cancel(); // 立即停止語音
     };
     document.getElementById("gamebutton_stop").addEventListener("click", gamebutton_stop_onclick, true);
 };
